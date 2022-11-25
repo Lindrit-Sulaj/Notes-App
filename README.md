@@ -1,1 +1,3 @@
-# This is a website
+# Notes App
+
+## Features
