@@ -1,3 +1,6 @@
 # Notes App
 
-## Features
+### Main Features
+Tags
+Note Creation
+Markdown 
