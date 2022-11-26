@@ -10,7 +10,7 @@ function App() {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/" element={<p className="hi">Hi</p>} />
+            <Route path="/" element={<p className="hi"></p>} />
           </Routes>
           <div className="space"></div>
         </div>

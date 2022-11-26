@@ -96,10 +96,11 @@ body {
     justify-content: center;
     align-items: center;
     gap: .4rem;
+    cursor: pointer;
 
     i {
       font-size: 19px;
-      color: $nav-icons;
+      color: $text-secondary;
     }
 
     span {

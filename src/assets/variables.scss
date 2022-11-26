@@ -5,22 +5,11 @@ $font-main: 'Public Sans', 'sans-serif';
 :root {
   --text-main: rgb(25, 25, 25);
   --text-secondary: rgb(110, 108, 108);
-  --nav-icons: rgb(60, 60, 60);
   --gray: rgb(206, 215, 216);
   --background-secondary: rgb(250, 250, 250);
   --background: white;
   --neon-blue: #4769ff;
 }
-
-// :root {
-//   --text-main: rgb(220, 220, 220);
-//   --text-secondary: rgb(200, 200, 200);
-//   --nav-icons: lightgray;
-//   --gray: rgb(70, 70, 70);
-//   --background-secondary: rgb(30, 30, 30);
-//   --background: rgb(35, 35, 35);
-//   --neon-blue: rgb(0, 150, 255);
-// }
 
 $text-main: var(--text-main);
 $text-secondary: var(--text-secondary);
@@ -28,7 +17,6 @@ $gray: var(--gray);
 $background: var(--background);
 $neon-blue: var(--neon-blue);
 $background-secondary: var(--background-secondary);
-$nav-icons: var(--nav-icons);
 
 @mixin hover {
   &:hover {

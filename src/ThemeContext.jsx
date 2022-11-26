@@ -26,7 +26,6 @@ export const ThemeProvider = ({ children }) => {
     if (colorTheme === 'light') {
       root.style.setProperty('--text-main', 'rgb(25, 25, 25)');
       root.style.setProperty('--text-secondary', 'rgb(110, 108, 108)');
-      root.style.setProperty('--nav-icons', 'rgb(60, 60, 60)');
       root.style.setProperty('--gray', 'rgb(206, 215, 216)');
       root.style.setProperty('--background-secondary', 'rgb(250, 250, 250)');
       root.style.setProperty('--background', 'white');
@@ -34,11 +33,10 @@ export const ThemeProvider = ({ children }) => {
     } else if (colorTheme === 'dark') {
       root.style.setProperty('--text-main', 'rgb(220, 220, 220)');
       root.style.setProperty('--text-secondary', 'rgb(200, 200, 200)');
-      root.style.setProperty('--nav-icons', 'lightgray');
       root.style.setProperty('--gray', ' rgb(70, 70, 70)');
       root.style.setProperty('--background-secondary', 'rgb(30, 30, 30)');
       root.style.setProperty('--background', 'rgb(35, 35, 35)');
-      root.style.setProperty('--neon-blue', 'rgb(0, 150, 255)');
+      root.style.setProperty('--neon-blue', 'rgb(0, 170, 255)');
     }
 
     localStorage.setItem('color-theme', colorTheme);
