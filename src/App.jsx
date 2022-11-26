@@ -12,9 +12,9 @@ function App() {
           <Routes>
             <Route path="/" element={<p className="hi">Hi</p>} />
           </Routes>
+          <div className="space"></div>
         </div>
       </Router>
-      <div className="space"></div>
     </ThemeProvider>
   )
 }

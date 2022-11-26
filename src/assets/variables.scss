@@ -12,6 +12,16 @@ $font-main: 'Public Sans', 'sans-serif';
   --neon-blue: #4769ff;
 }
 
+// :root {
+//   --text-main: rgb(220, 220, 220);
+//   --text-secondary: rgb(200, 200, 200);
+//   --nav-icons: lightgray;
+//   --gray: rgb(70, 70, 70);
+//   --background-secondary: rgb(30, 30, 30);
+//   --background: rgb(35, 35, 35);
+//   --neon-blue: rgb(0, 150, 255);
+// }
+
 $text-main: var(--text-main);
 $text-secondary: var(--text-secondary);
 $gray: var(--gray);
@@ -23,5 +33,13 @@ $nav-icons: var(--nav-icons);
 @mixin hover {
   &:hover {
     @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 700px) {
+    & {
+      @content;
+    }
   }
 }

@@ -8,11 +8,17 @@
 
 body {
   font-family: $font-main;
+  background: $background;
 }
 
 .App {
   max-width: 1400px;
   margin: auto;
+  padding-top: 65px;
+
+  @include mobile {
+    padding-top: 0;
+  }
 }
 
 .hi {
@@ -34,6 +40,7 @@ body {
   padding: 0 1rem;
   width: 100%;
   max-width: 1400px;
+  background: $background;
 
   div {
     display: flex;
@@ -50,6 +57,23 @@ body {
     padding: 7px 14px;
     border-radius: 5px;
     cursor: pointer;
+
+    i {
+      color: $neon-blue;
+    }
+  }
+
+  button.darkModeButton {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button.create {
+    background-color: $neon-blue;
+    color: $background;
+    border: none;
   }
 }
 
