@@ -8,13 +8,18 @@ const EditTags = () => {
   const addTag = () => {
     const value = inputRef.current.value;
     if (tags.includes(value)) return;
+    if (!value) return;
 
     tagsDispatch({ type: 'add', payload: { name: value } });
     inputRef.current.value = ''
   }
 
   const deleteTag = (id) => {
-    tagsDispatch({ type: 'delete', payload: { id: id }});
+    tagsDispatch({ type: 'delete', payload: { id: id } });
+  }
+
+  const handleEdit = (id, value) => {
+    tagsDispatch({ type: 'edit', payload: { id, value }})
   }
 
   return (
@@ -27,7 +32,7 @@ const EditTags = () => {
       <div className='Tags'>
         {tags ? (
           tags.map((tag, index) => (
-            <Tag deleteTag={deleteTag} id={index} name={tag} key={index} />
+            <Tag handleEdit={handleEdit} deleteTag={deleteTag} id={index} name={tag} key={index} />
           ))
         ) : (
           <p>You have no tags yet</p>
@@ -37,14 +42,33 @@ const EditTags = () => {
   )
 }
 
-const Tag = ({ deleteTag, id, name }) => {
+const Tag = ({ deleteTag, id, name, handleEdit }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [inputValue, setInputValue] = useState(name);
+
   return (
-    <div className='Tag'>
-      <p>{name}</p>
-      <button onClick={() => deleteTag(id)}>
-        <i className="fa-solid fa-xmark"></i>
-      </button>
-    </div>
+    <>
+      {!isEditing &&
+        (<div className='Tag'>
+          <p onDoubleClick={() => setIsEditing(true)}>{name}</p>
+          <button onClick={() => deleteTag(id)}>
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+        </div>)}
+      {isEditing && (
+        <div className='Tag-Editing'>
+          <input type="text" value={inputValue} onChange={(e) => {
+            setInputValue(e.target.value)
+          }}/>
+          <button onClick={() => {
+            setIsEditing(false);
+            handleEdit(id, inputValue);
+          }}>
+            <i className="fa-solid fa-pen"></i>
+          </button>
+        </div>
+      )}
+    </>
   )
 }
 

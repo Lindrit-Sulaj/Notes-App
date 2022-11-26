@@ -15,7 +15,8 @@ const tagsReducer = (state, action) => {
       return state.filter((tag, index) => index !== action.payload.id)
     };
     case 'edit': {
-      return [ ...state, 'something will be edited'];
+      const [id, newValue] = [action.payload.id, action.payload.value]
+      return state.map((tag, index) => (index === id) ? newValue : tag)
     }
   }
 }
@@ -36,7 +37,9 @@ export const ThemeProvider = ({ children }) => {
     }
   }, []);
 
-  const handleColorTheme = useMemo(() => {
+  useEffect(() => { localStorage.setItem('tags', JSON.stringify(tags)) }, [tags])
+
+  useMemo(() => {
     const root = document.documentElement;
     if (colorTheme === 'light') {
       root.style.setProperty('--text-main', 'rgb(25, 25, 25)');
