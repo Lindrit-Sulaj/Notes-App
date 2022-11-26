@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useEffect, useMemo } from 'react'
+import React, { useContext, createContext, useState, useEffect, useMemo, useReducer } from 'react'
 
 const ThemeContext = createContext();
 
@@ -6,9 +6,24 @@ const useTheme = () => {
   return useContext(ThemeContext);
 }
 
+const tagsReducer = (state, action) => {
+  switch (action.type) {
+    case 'add': {
+      return [ ...state, action.payload.name];
+    };
+    case 'delete': {
+      return state.filter((tag, index) => index !== action.payload.id)
+    };
+    case 'edit': {
+      return [ ...state, 'something will be edited'];
+    }
+  }
+}
+
 export const ThemeProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [colorTheme, setColorTheme] = useState(localStorage.getItem('color-theme') || 'light');
+  const [tags, tagsDispatch] = useReducer(tagsReducer, JSON.parse(localStorage.getItem('tags')) || []);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -28,6 +43,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty('--text-secondary', 'rgb(110, 108, 108)');
       root.style.setProperty('--gray', 'rgb(206, 215, 216)');
       root.style.setProperty('--background-secondary', 'rgb(250, 250, 250)');
+      root.style.setProperty('--background-tertiary', 'rgb(245, 245, 245)')
       root.style.setProperty('--background', 'white');
       root.style.setProperty('neon-blue', '#4769ff');
     } else if (colorTheme === 'dark') {
@@ -36,6 +52,7 @@ export const ThemeProvider = ({ children }) => {
       root.style.setProperty('--gray', ' rgb(70, 70, 70)');
       root.style.setProperty('--background-secondary', 'rgb(30, 30, 30)');
       root.style.setProperty('--background', 'rgb(35, 35, 35)');
+      root.style.setProperty('--background-tertiary', 'rgb(50, 50, 50)')
       root.style.setProperty('--neon-blue', 'rgb(0, 170, 255)');
     }
 
@@ -44,7 +61,7 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={
-      { windowWidth, colorTheme, setColorTheme }
+      { windowWidth, colorTheme, setColorTheme, tags, tagsDispatch }
     }>
       {children}
     </ThemeContext.Provider>

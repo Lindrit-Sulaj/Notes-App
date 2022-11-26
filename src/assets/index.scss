@@ -42,6 +42,14 @@ body {
   max-width: 1400px;
   background: $background;
 
+  a {
+    text-decoration: none;
+  }
+
+  .logo {
+    color: $neon-blue;
+  }
+
   div {
     display: flex;
     gap: .8rem;
@@ -113,7 +121,103 @@ body {
   button:first-child {
     border-left: none;
   }
+
   button:last-child {
     border-right: none;
+  }
+}
+
+.Dialog {
+  position: fixed;
+  width: 100%;
+  max-width: 1400px;
+  height: calc(100vh - 65px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.EditTags {
+  width: 95%;
+  max-width: 350px;
+  padding: 2rem .8rem;
+
+  p.heading {
+    color: $text-main;
+    margin: 1rem 0;
+    font-size: 20px;
+
+    span {
+      text-decoration: underline;
+      text-decoration-color: $neon-blue;
+    }
+  }
+
+  .Tags {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .Tag {
+    background-color: $background-secondary;
+    padding: .8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $text-main;
+    border-radius: 4px;
+
+    p {
+      font-family: $font-main;
+      text-decoration: underline;
+      text-decoration-color: $neon-blue;
+    }
+    
+    button {
+      width: 25px;
+      height: 25px;
+      background-color: $neon-blue;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      color: $background;
+
+      @include hover {
+        opacity: .7;
+      }
+    }
+  }
+
+  .Add-Tag {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: .4rem;
+
+    input {
+      width: 80%;
+      background-color: $background-tertiary;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      color: $text-main;
+      padding: 0 .5rem;
+      font-size: 16px;
+      font-family: $font-main;
+    }
+
+    button {
+      border: none;
+      width: 20%;
+      border-radius: 4px;
+      background-color: $neon-blue;
+      font-family: $font-main;
+      font-size: 16.2px;
+      cursor: pointer;
+      color: $background;
+    }
   }
 }

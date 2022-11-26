@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useTheme from './ThemeContext';
+import { Link } from 'react-router-dom';
+import Dialog from './Dialog';
+import EditTags from './EditTags';
+
+const object = {
+  props: {
+    arr: []
+  }
+}
 
 const Navbar = () => {
   const { windowWidth, colorTheme, setColorTheme } = useTheme();
+  const [editTagsOpened, setEditTagsOpened] = useState(false);
 
   return (
     <>
       {windowWidth > 700 ? (
         <nav className="navbar__desktop">
-          <h1>Notes</h1>
+          <Link to="/">
+            <h1 className='logo'>Notes</h1>
+          </Link>
           <div>
             <button className='darkModeButton' onClick={() => setColorTheme((colorTheme === 'light') ? 'dark' : 'light')}>
               <i className={`fa-solid fa-${(colorTheme === 'light') ? 'moon' : 'sun'}`}></i>
             </button>
             <button className='create'>Create</button>
-            <button>Edit Tags</button>
+            <button onClick={() => setEditTagsOpened(!editTagsOpened)}>Edit Tags</button>
           </div>
         </nav>) : (
         <nav className="navbar__mobile">
@@ -26,12 +38,14 @@ const Navbar = () => {
             <i className="fa-solid fa-plus"></i>
             <span>Create</span>
           </button>
-          <button>
+          <button onClick={() => setEditTagsOpened(!editTagsOpened)}>
             <i className="fa-solid fa-tags"></i>
             <span>Tags</span>
           </button>
         </nav>
       )}
+      <Dialog isOpen={editTagsOpened} setIsOpen={setEditTagsOpened}
+      ><EditTags /></Dialog>
     </>
   )
 }
