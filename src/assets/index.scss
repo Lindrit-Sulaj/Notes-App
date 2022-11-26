@@ -139,8 +139,12 @@ body {
 
 .EditTags {
   width: 95%;
-  max-width: 350px;
-  padding: 2rem .8rem;
+  max-width: 420px;
+  padding: 2rem 2rem;
+  border: 1px solid $background-secondary;
+  background-color: $background;
+  box-shadow: 0px 5px 20px 10px $background-secondary; 
+  border-radius: 20px;
 
   p.heading {
     color: $text-main;
@@ -173,6 +177,7 @@ body {
       font-family: $font-main;
       text-decoration: underline;
       text-decoration-color: $neon-blue;
+      cursor: pointer;
     }
     
     button {
@@ -186,6 +191,44 @@ body {
 
       @include hover {
         opacity: .7;
+      }
+    }    
+  }
+
+  .Tag-Editing {
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+
+    input {
+      padding: 0 .5rem;
+      font-family: $font-main;
+      font-size: 16px;
+      background: transparent;
+      color: $text-main;
+      border: 1px solid $gray;
+      border-radius: 4px;
+      width: 85%;
+    }
+
+    input:focus {
+      outline-color: $neon-blue;
+    }
+
+    button {
+      width: 12%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: .4rem;
+      font-family: $font-main;
+      background-color: $neon-blue;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+
+      @include hover {
+        opacity: .8;
       }
     }
   }
