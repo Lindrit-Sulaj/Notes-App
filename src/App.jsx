@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import useTheme, { ThemeProvider } from "./ThemeContext";
+
 function App() {
   return (
-    <h1>Hello World</h1>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<p className="hi">Hi</p>} />
+          </Routes>
+        </div>
+      </Router>
+      <div className="space"></div>
+    </ThemeProvider>
   )
 }
 

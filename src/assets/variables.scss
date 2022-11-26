@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;500&display=swap');
+
+$font-main: 'Public Sans', 'sans-serif';
+
+:root {
+  --text-main: rgb(25, 25, 25);
+  --text-secondary: rgb(110, 108, 108);
+  --nav-icons: rgb(60, 60, 60);
+  --gray: rgb(206, 215, 216);
+  --background-secondary: rgb(250, 250, 250);
+  --background: white;
+  --neon-blue: #4769ff;
+}
+
+$text-main: var(--text-main);
+$text-secondary: var(--text-secondary);
+$gray: var(--gray);
+$background: var(--background);
+$neon-blue: var(--neon-blue);
+$background-secondary: var(--background-secondary);
+$nav-icons: var(--nav-icons);
+
+@mixin hover {
+  &:hover {
+    @content;
+  }
+}

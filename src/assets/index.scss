@@ -1,0 +1,94 @@
+@import './variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+}
+
+.App {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.hi {
+  font-size: 30px;
+  color: $text-main;
+}
+
+.space {
+  height: 200vh;
+}
+
+.navbar__desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  height: 65px;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 1400px;
+
+  div {
+    display: flex;
+    gap: .8rem;
+  }
+
+  button {
+    border: none;
+    background: none;
+    font-family: $font-main;
+    font-size: 17px;
+    color: $text-secondary;
+    border: 1px solid $gray;
+    padding: 7px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.navbar__mobile {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: 1rem 0 .6rem 0;
+  background-color: $background-secondary;
+  justify-content: space-around;
+  border-radius: 1rem 1rem 0 0;
+
+  button {
+    width: 33.333%;
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+
+    i {
+      font-size: 19px;
+      color: $nav-icons;
+    }
+
+    span {
+      font-family: $font-main;
+      font-size: 15px;
+      color: $text-secondary;
+    }
+  }
+
+  button:first-child {
+    border-left: none;
+  }
+  button:last-child {
+    border-right: none;
+  }
+}

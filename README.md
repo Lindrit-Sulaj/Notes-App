@@ -1,4 +1,4 @@
-# Project Title
+# Notes
 
 This is a React note app, in which you can create, read, update and delete notes. Some extra features of this web application are search bar and tags. All of the posts will be saved locally using localStorage.
 
@@ -14,6 +14,7 @@ This is a React note app, in which you can create, read, update and delete notes
  - [react markdown](https://github.com/remarkjs/react-markdown)
  - [react](https://www.npmjs.com/package/react)
  - [react-router](https://www.npmjs.com/package/react-router)
+ - [sass](https://sass-lang.com/)
 
 ## Authors
 
