@@ -1,21 +1,20 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import NotePreview from './NotePreview';
+import useTheme from './ThemeContext';
 
 const CreateNote = () => {
   const [title, setTitle] = useState('');
-  const [newMarkdown, setNewMarkdown] = useState('');
-  const [tags, setTags] = useState([]);
+  const [postTags, setPostTags] = useState([]);
   const [markdown, setMarkdown] = useState('');
 
-  const newNote = { title, tags, markdown }
-
-  const handleTags = () => {
-    setTags([...tags, newMarkdown]);
+  const handleCreateTags = (tag) => {
+    setPostTags([...postTags, tag])
   }
 
   return (
     <section className="createNote">
-      <form action="">
+      <h1>New note</h1>
+      <form action="" autoComplete='off'>
         <div className='main-actions'>
           <div className='note-title'>
             <label htmlFor="note-title">Note title:</label>
@@ -24,32 +23,22 @@ const CreateNote = () => {
           <div className='note-tags'>
             <label htmlFor="note-tags">New Tag:</label>
             <div className="new-tag">
-              <input type="text" value={newMarkdown} onChange={(e) => setNewMarkdown(e.target.value)} placeholder='Eg: react' id='note-tags' />
-              <button type='button' onClick={handleTags}><i className="fa-solid fa-plus"></i></button>
+              <NewTag handleTags={handleCreateTags} />
             </div>
           </div>
         </div>
         <div className="tags">
           <p>Tags:</p>
-          <div className='tag'>
-            <span>react</span>
-            <button><i className="fa-solid fa-xmark"></i></button>
-          </div>
-          <div className='tag'>
-            <span>vue</span>
-            <button><i className="fa-solid fa-xmark"></i></button>
-          </div>
-          <div className='tag'>
-            <span>angular</span>
-            <button><i className="fa-solid fa-xmark"></i></button>
-          </div>
-          <div className='tag'>
-            <span>django</span>
-            <button><i className="fa-solid fa-xmark"></i></button>
-          </div>
+
+          {postTags.map((tag, index) => (
+            <div className='tag' key={index}>
+              <span>{tag}</span>
+              <button onClick={() => handleDeleteTag(index)}><i className="fa-solid fa-xmark"></i></button>
+            </div>
+          ))}
         </div>
         <div className='markdown'>
-          <p>Markdown</p>
+          <p>Markdown:</p>
           <textarea value={markdown} onChange={(e) => setMarkdown(e.target.value)}>
           </textarea>
         </div>
@@ -57,6 +46,19 @@ const CreateNote = () => {
       </form>
       <NotePreview />
     </section>
+  )
+}
+
+function NewTag({ handleTags }) {
+  const [inputValue, setInputValue] = useState('');
+
+  return (
+    <>
+      <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder='Eg: react' id='note-tags' />
+      <button type='button' onClick={() => { 
+        handleTags(inputValue)
+        setInputValue('') }}><i className="fa-solid fa-plus"></i></button>
+    </>
   )
 }
 
