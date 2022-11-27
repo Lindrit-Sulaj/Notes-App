@@ -5,7 +5,7 @@ const NotePreview = ({ title, tags, markdown }) => {
   return (
     <section className="note-preview">
       <ReactMarkdown>
-        # Hello World
+        ## Hello World
       </ReactMarkdown>
     </section>
   )
