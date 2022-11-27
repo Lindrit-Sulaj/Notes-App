@@ -6,6 +6,25 @@
   box-sizing: border-box;
 }
 
+ul { 
+  list-style-type: disc; 
+  list-style-position: inside; 
+}
+ol { 
+  list-style-type: decimal; 
+  list-style-position: inside; 
+}
+ul ul, ol ul { 
+  list-style-type: circle; 
+  list-style-position: inside; 
+  margin-left: 15px; 
+}
+ol ol, ul ol { 
+  list-style-type: lower-latin; 
+  list-style-position: inside; 
+  margin-left: 15px; 
+}
+
 body {
   font-family: $font-main;
   background: $background;
@@ -137,6 +156,12 @@ body {
   justify-content: center;
 }
 
+.hi {
+  font-size: 80px;
+  color: white;
+  margin-top: 300px;
+}
+
 .EditTags {
   width: 95%;
   max-width: 420px;
@@ -264,3 +289,124 @@ body {
     }
   }
 }
+
+.createNote {
+  padding: 2rem 1rem 0 1rem;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .main-actions {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 2rem;
+      row-gap: 1.5em;
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .main-actions * {
+      font-family: $font-main;
+    }
+
+    .main-actions input {
+      font-size: 16px;
+      color: $text-main;
+      border: 1px solid $gray;
+      border-radius: 4px;
+      background-color: $background;
+    }
+
+    .main-actions input:focus {
+      outline: none;
+      border-color: $neon-blue;
+      border-width: 2px;
+    }
+
+    .main-actions label {
+      color: $text-secondary;
+    }
+
+    .note-title {
+      width: 100%;
+      max-width: 270px;
+
+      label {
+        display: block;
+        width: 100%;
+        margin-bottom: .6rem;
+      }
+      input {
+        display: block;
+        width: 100%;
+        height: 40px;
+        padding: 0 .8rem;
+      }
+    }
+
+    .note-tags {
+      width: 100%;
+      max-width: 270px;
+
+      label {
+        display: block;
+        width: 100%;
+        margin-bottom: .6rem;
+      }
+
+      div {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        gap: .5rem;
+
+        input {
+          width: 85%;
+          padding: 0 .8rem;
+        }
+        button {
+          width: 15%;
+          background-color: $neon-blue;
+          color: $background;
+          border: none;
+          border-radius: 6px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .tags {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+
+      p {
+        color: $text-main;
+        margin-right: 1rem;
+      }
+
+      div {
+        background-color: $neon-blue;
+        color: $background;
+        display: flex;
+        gap: .5rem;
+        padding: .4rem .8rem;
+        border-radius: 6px;
+
+        button {
+          background: none;
+          border: none;
+          color: $background;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+

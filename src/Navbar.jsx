@@ -4,12 +4,6 @@ import { Link } from 'react-router-dom';
 import Dialog from './Dialog';
 import EditTags from './EditTags';
 
-const object = {
-  props: {
-    arr: []
-  }
-}
-
 const Navbar = () => {
   const { windowWidth, colorTheme, setColorTheme } = useTheme();
   const [editTagsOpened, setEditTagsOpened] = useState(false);

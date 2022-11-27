@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import useTheme, { ThemeProvider } from "./ThemeContext";
-import EditTags from "./EditTags";
+import CreateNote from "./CreateNote";
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/" element={<p className="hi"></p>} />
+            <Route path="/" element={<p className="hi">Hi</p>} />
+            <Route path="/create" element={<CreateNote />}></Route>
           </Routes>
         </div>
       </Router>

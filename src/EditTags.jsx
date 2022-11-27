@@ -7,8 +7,13 @@ const EditTags = () => {
 
   const addTag = () => {
     const value = inputRef.current.value;
-    if (tags.includes(value)) return;
-    if (!value) return;
+    if (tags.includes(value)) { 
+      alert("Alert: Tag Already Exists");
+      return;
+    } else if (value === '') {
+      alert("Alert: Cannot add empty tag");
+      return;
+    };
 
     tagsDispatch({ type: 'add', payload: { name: value } });
     inputRef.current.value = ''
@@ -19,7 +24,7 @@ const EditTags = () => {
   }
 
   const handleEdit = (id, value) => {
-    tagsDispatch({ type: 'edit', payload: { id, value }})
+    tagsDispatch({ type: 'edit', payload: { id, value } })
   }
 
   return (
@@ -59,7 +64,7 @@ const Tag = ({ deleteTag, id, name, handleEdit }) => {
         <div className='Tag-Editing'>
           <input type="text" value={inputValue} onChange={(e) => {
             setInputValue(e.target.value)
-          }}/>
+          }} />
           <button onClick={() => {
             setIsEditing(false);
             handleEdit(id, inputValue);
