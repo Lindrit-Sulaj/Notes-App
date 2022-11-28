@@ -39,10 +39,6 @@ body {
   max-width: 1400px;
   margin: auto;
   padding-top: 65px;
-
-  @include mobile {
-    padding-top: 0;
-  }
 }
 
 .hi {
@@ -66,6 +62,9 @@ body {
   max-width: 1400px;
   background: $background;
   z-index: 10;
+  box-shadow: 1px 10px 32px 4px $background;
+  -webkit-box-shadow: 1px 10px 32px 4px $background;
+  -moz-box-shadow: 1px 10px 32px 4px $background;
 
   a {
     text-decoration: none;
@@ -102,6 +101,7 @@ body {
     justify-content: center;
     align-items: center;
   }
+
 
   button.create {
     background-color: $neon-blue;
@@ -435,7 +435,36 @@ body {
 }
 
 .note-preview {
+  padding: 0 1rem;
   color: $text-main;
+
+  .note-title {
+    font-size: 36px;
+    text-decoration: underline $neon-blue;
+    margin-top: 2rem;
+  }
+
+  .tags {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background-color: $neon-blue;
+    color: $background;
+    padding: .4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .hr {
+    background-color: $gray;
+    border: none;
+    height: 1px;
+    margin-bottom: 3rem;
+  }
 
   h1 {
     color: $text-main;
@@ -538,6 +567,7 @@ body {
       }
     }
   }
+
   tbody {
     tr {
       td {

@@ -9,7 +9,7 @@ const useTheme = () => {
 const tagsReducer = (state, action) => {
   switch (action.type) {
     case 'add': {
-      return [ ...state, action.payload.name];
+      return [...state, action.payload.name];
     };
     case 'delete': {
       return state.filter((tag, index) => index !== action.payload.id)
@@ -21,10 +21,19 @@ const tagsReducer = (state, action) => {
   }
 }
 
+const notesReducer = (state, action) => {
+  switch (action.type) {
+    case 'add': {
+      return [...state, action.payload.noteData]
+    }
+  }
+}
+
 export const ThemeProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [colorTheme, setColorTheme] = useState(localStorage.getItem('color-theme') || 'light');
   const [tags, tagsDispatch] = useReducer(tagsReducer, JSON.parse(localStorage.getItem('tags')) || []);
+  const [notes, notesDispatch] = useReducer(notesReducer, JSON.parse(localStorage.getItem('notes')) || []);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -37,7 +46,10 @@ export const ThemeProvider = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => { localStorage.setItem('tags', JSON.stringify(tags)) }, [tags])
+  useEffect(() => {
+    localStorage.setItem('tags', JSON.stringify(tags));
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [tags, notes])
 
   useMemo(() => {
     const root = document.documentElement;
@@ -64,7 +76,7 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={
-      { windowWidth, colorTheme, setColorTheme, tags, tagsDispatch }
+      { windowWidth, colorTheme, setColorTheme, tags, tagsDispatch, notes, notesDispatch }
     }>
       {children}
     </ThemeContext.Provider>

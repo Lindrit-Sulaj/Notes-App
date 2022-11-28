@@ -18,7 +18,9 @@ const Navbar = () => {
           <button className='darkModeButton' onClick={() => setColorTheme((colorTheme === 'light') ? 'dark' : 'light')}>
             <i className={`fa-solid fa-${(colorTheme === 'light') ? 'moon' : 'sun'}`}></i>
           </button>
-          <button className='create'>Create</button>
+          <Link to={"/create"}>
+            <button className='create'>Create</button>
+          </Link>
           <button onClick={() => setEditTagsOpened(!editTagsOpened)}>Edit Tags</button>
         </div>
       </nav>

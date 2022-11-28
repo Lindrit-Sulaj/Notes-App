@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import NotePreview from './NotePreview';
 import useTheme from './ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 const CreateNote = () => {
-  const { tags } = useTheme();
+  const { tags, notes, notesDispatch } = useTheme();
+  const navigate = useNavigate()
 
   const [title, setTitle] = useState('');
   const [postTags, setPostTags] = useState([]);
@@ -17,10 +19,22 @@ const CreateNote = () => {
     setPostTags([...postTags, tag])
   }
 
+  const handleDeleteTag = (id) => {
+    let newTags = postTags.filter((tag, index) => index !== id);
+    setPostTags(newTags);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const noteData = { title, postTags, markdown };
+    notesDispatch({ type: 'add', payload: { noteData } });
+    navigate('/')
+  }
+
   return (
     <section className="createNote">
       <h1 className='new-note-title'>New note</h1>
-      <form action="" autoComplete='off'>
+      <form action="" autoComplete='off' onSubmit={handleSubmit}>
         <div className='main-actions'>
           <div className='note-title'>
             <label htmlFor="note-title">Note title:</label>
@@ -39,7 +53,7 @@ const CreateNote = () => {
           {postTags.map((tag, index) => (
             <div className='tag' key={index}>
               <span>{tag}</span>
-              <button onClick={() => handleDeleteTag(index)}><i className="fa-solid fa-xmark"></i></button>
+              <button type='button' onClick={() => handleDeleteTag(index)}><i className="fa-solid fa-xmark"></i></button>
             </div>
           ))}
         </div>
