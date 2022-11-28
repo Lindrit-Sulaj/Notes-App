@@ -65,6 +65,7 @@ body {
   width: 100%;
   max-width: 1400px;
   background: $background;
+  z-index: 10;
 
   a {
     text-decoration: none;
@@ -109,52 +110,12 @@ body {
   }
 }
 
-.navbar__mobile {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  display: flex;
-  padding: 1rem 0 .6rem 0;
-  background-color: $background-secondary;
-  justify-content: space-around;
-  border-radius: 1rem 1rem 0 0;
-
-  button {
-    width: 33.333%;
-    border: none;
-    background: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: .4rem;
-    cursor: pointer;
-
-    i {
-      font-size: 19px;
-      color: $text-secondary;
-    }
-
-    span {
-      font-family: $font-main;
-      font-size: 15px;
-      color: $text-secondary;
-    }
-  }
-
-  button:first-child {
-    border-left: none;
-  }
-
-  button:last-child {
-    border-right: none;
-  }
-}
 
 .Dialog {
   position: fixed;
   width: 100%;
   max-width: 1400px;
+  top: 65px;
   height: calc(100vh - 65px);
   display: flex;
   align-items: center;
@@ -298,7 +259,7 @@ body {
 .createNote {
   padding: 2rem 1rem 0 1rem;
 
-  h1 {
+  .new-note-title {
     color: $text-main;
     margin-bottom: 2rem;
     text-decoration: underline $neon-blue 2px;
@@ -468,6 +429,120 @@ body {
 
       @include hover {
         opacity: .7;
+      }
+    }
+  }
+}
+
+.note-preview {
+  color: $text-main;
+
+  h1 {
+    color: $text-main;
+    font-size: 30px;
+  }
+
+  h2 {
+    color: $text-main;
+    opacity: .95;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $gray;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $text-main;
+    opacity: .8;
+  }
+
+  * {
+    margin: 1rem 0;
+  }
+
+  p {
+    font-size: 16px;
+    color: $text-main;
+    opacity: .9;
+  }
+
+  code {
+    background-color: $background-secondary;
+    padding: 3px;
+    color: $neon-blue;
+  }
+
+  ul {
+    margin: 2rem 0;
+
+    li {
+      color: $text-main;
+      opacity: .95;
+      margin: .5rem 1rem;
+    }
+  }
+
+  .contains-task-list {
+    li {
+      margin: 0 1rem;
+    }
+  }
+
+  a {
+    color: $neon-blue;
+  }
+
+  pre {
+    background-color: $background-secondary;
+    padding: 2rem 1rem;
+    overflow-x: scroll;
+    border-left: 3px solid $neon-blue;
+
+    code {
+      font-size: 16px;
+      color: $text-main;
+    }
+  }
+
+  pre::-webkit-scrollbar {
+    height: 6px;
+    border-radius: 4px;
+  }
+
+  pre::-webkit-scrollbar-track {
+    background: $background;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: $background-tertiary;
+    width: 2px;
+    border-radius: 4px;
+  }
+
+  pre::-webkit-scrollbar-thumb:hover {
+    background-color: $gray;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 2rem 0 3rem 0;
+  }
+
+  thead {
+    tr {
+      th {
+        padding: .8rem 1rem;
+        border: 1px solid $gray;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        padding: .6rem .5rem;
+        border: 1px solid $gray;
       }
     }
   }

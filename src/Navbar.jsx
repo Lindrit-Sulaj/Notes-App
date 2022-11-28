@@ -10,34 +10,18 @@ const Navbar = () => {
 
   return (
     <>
-      {windowWidth > 700 ? (
-        <nav className="navbar__desktop">
-          <Link to="/">
-            <h1 className='logo'>Notes</h1>
-          </Link>
-          <div>
-            <button className='darkModeButton' onClick={() => setColorTheme((colorTheme === 'light') ? 'dark' : 'light')}>
-              <i className={`fa-solid fa-${(colorTheme === 'light') ? 'moon' : 'sun'}`}></i>
-            </button>
-            <button className='create'>Create</button>
-            <button onClick={() => setEditTagsOpened(!editTagsOpened)}>Edit Tags</button>
-          </div>
-        </nav>) : (
-        <nav className="navbar__mobile">
-          <button onClick={() => setColorTheme((colorTheme === 'light') ? 'dark' : 'light')}>
+      <nav className="navbar__desktop">
+        <Link to="/">
+          <h1 className='logo'>Notes</h1>
+        </Link>
+        <div>
+          <button className='darkModeButton' onClick={() => setColorTheme((colorTheme === 'light') ? 'dark' : 'light')}>
             <i className={`fa-solid fa-${(colorTheme === 'light') ? 'moon' : 'sun'}`}></i>
-            <span>{(colorTheme === 'light') ? 'Dark' : 'Light'}</span>
           </button>
-          <button>
-            <i className="fa-solid fa-plus"></i>
-            <span>Create</span>
-          </button>
-          <button onClick={() => setEditTagsOpened(!editTagsOpened)}>
-            <i className="fa-solid fa-tags"></i>
-            <span>Tags</span>
-          </button>
-        </nav>
-      )}
+          <button className='create'>Create</button>
+          <button onClick={() => setEditTagsOpened(!editTagsOpened)}>Edit Tags</button>
+        </div>
+      </nav>
       <Dialog isOpen={editTagsOpened} setIsOpen={setEditTagsOpened}
       ><EditTags /></Dialog>
     </>

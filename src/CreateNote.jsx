@@ -3,17 +3,23 @@ import NotePreview from './NotePreview';
 import useTheme from './ThemeContext';
 
 const CreateNote = () => {
+  const { tags } = useTheme();
+
   const [title, setTitle] = useState('');
   const [postTags, setPostTags] = useState([]);
   const [markdown, setMarkdown] = useState('');
 
   const handleCreateTags = (tag) => {
+    if (tag === '' || !tags.includes(tag)) {
+      alert("Tag cannot be empty or not be included in the tags");
+      return;
+    }
     setPostTags([...postTags, tag])
   }
 
   return (
     <section className="createNote">
-      <h1>New note</h1>
+      <h1 className='new-note-title'>New note</h1>
       <form action="" autoComplete='off'>
         <div className='main-actions'>
           <div className='note-title'>
@@ -44,7 +50,7 @@ const CreateNote = () => {
         </div>
         <button type="submit">Create</button>
       </form>
-      <NotePreview />
+      {/* <NotePreview markdown={markdown}/> */}
     </section>
   )
 }
