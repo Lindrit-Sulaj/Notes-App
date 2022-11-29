@@ -28,7 +28,8 @@ const notesReducer = (state, action) => {
     }
     case 'edit': {
       const [noteData, id] = [action.payload.noteData, action.payload.id];
-      return state.splice(id, 1, noteData);
+      state.splice(id, 1, noteData)
+      return state;
     }
   }
 }
