@@ -7,6 +7,7 @@ import NotePreview from "./NotePreview";
 import EditNote from "./EditNote";
 import Landing from "./Landing";
 
+
 function App() {
   return (
     <ThemeProvider>
@@ -16,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/create" element={<CreateNote />}></Route>
-            <Route path="/note/:id" element={<NotePreview />}></Route>
+            <Route path="/notes/:id" element={<NotePreview />}></Route>
             <Route path="/edit/:id" element={<EditNote />}></Route>
           </Routes>
         </div>
