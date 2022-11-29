@@ -41,15 +41,6 @@ body {
   padding-top: 65px;
 }
 
-.hi {
-  font-size: 30px;
-  color: $text-main;
-}
-
-.space {
-  height: 200vh;
-}
-
 .navbar__desktop {
   display: flex;
   align-items: center;
@@ -120,6 +111,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .hi {
@@ -133,9 +125,11 @@ body {
   max-width: 420px;
   padding: 2rem 2rem;
   border: 1px solid $background-secondary;
-  background-color: $background;
   box-shadow: 0px 5px 20px 10px $background-secondary;
   border-radius: 20px;
+  position: absolute;
+  z-index: 10!important;
+  background-color: $background;
 
   p.heading {
     color: $text-main;
@@ -440,7 +434,9 @@ body {
 
   .note-title {
     font-size: 36px;
-    text-decoration: underline $neon-blue;
+    @include mobile {
+      font-size: 30px;
+    }
     margin-top: 2rem;
   }
 
