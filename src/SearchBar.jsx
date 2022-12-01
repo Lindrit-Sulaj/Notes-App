@@ -5,7 +5,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, selectedTags, setSelectedTags })
     <div className="Searchbar">
       <div className='search'>
         <i className="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder='Search for your notes' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        <input type="text" placeholder='Search for your notes:' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         <i className="fa-solid fa-xmark" onClick={() => setSearchTerm('')}></i>
       </div>
       <div className='tags'>
