@@ -31,6 +31,10 @@ const notesReducer = (state, action) => {
       state.splice(id, 1, noteData)
       return state;
     }
+    case 'delete': {
+      const id = action.payload.id;
+      return state.filter((note, index) => index !== id);
+    }
   }
 }
 

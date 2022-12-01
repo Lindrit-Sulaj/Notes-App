@@ -12,7 +12,7 @@ Array.prototype.getObjectIndex = function (givenObj) {
 }
 
 const SearchResults = ({ searchTerm, selectedTags }) => {
-  const { tags, notes } = useTheme();
+  const { tags, notes, notesDispatch } = useTheme();
 
   const results = useMemo(() => {
     return notes.filter((note, id) => {
@@ -32,23 +32,22 @@ const SearchResults = ({ searchTerm, selectedTags }) => {
 
       if (isValid) return note;
     })
-  }, [searchTerm, selectedTags])
+  }, [searchTerm, selectedTags, notes])
 
   return (
     <div className="SearchResults">
       {results.map((result, index) => {
-        return <NoteBox result={result} title={result.title} tags={result.postTags} key={index} />
+        return <NoteBox notesDispatch={notesDispatch} result={result} title={result.title} tags={result.postTags} key={index} />
       })}
     </div>
   )
 }
 
-const NoteBox = ({ result, title, tags }) => {
+const NoteBox = ({ result, title, tags, notesDispatch }) => {
   const { notes } = useTheme();
   const [optionsOpened, setOptionsOpened] = useState(false);
 
   const index = notes.getObjectIndex(result);
-  console.log(index);
 
   return (
     <div className='note-box'>
@@ -82,11 +81,12 @@ const NoteBox = ({ result, title, tags }) => {
                 <span>Edit</span>
               </button>
             </Link>
-            <Link>
-              <button className='delete'>
-                <span>Delete</span>
-              </button>
-            </Link>
+            <button className='delete' onClick={() => {
+              notesDispatch({ type: 'delete', payload: { id: index } })
+              setOptionsOpened(false);
+            }}>
+              <span>Delete</span>
+            </button>
           </div>
         )}
       </div>
