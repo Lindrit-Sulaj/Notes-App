@@ -18,6 +18,9 @@ const CreateNote = () => {
     } else if (!tags.includes(tag)) {
       alert("Tag doesn't exist: Try adding one at Edit Tags button");
       return;
+    } else if (postTags.includes(tag)) {
+      alert("Tag already has been added");
+      return;
     }
 
     setPostTags([...postTags, tag])

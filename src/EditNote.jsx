@@ -15,6 +15,9 @@ const EditNote = () => {
     if (tag === '' || !tags.includes(tag)) {
       alert("Tag cannot be empty or not be included in the tags");
       return;
+    } else if (postTags.includes(tag)) {
+      alert("Tag already has been added");
+      return;
     }
     setPostTags([...postTags, tag])
   }
@@ -73,7 +76,6 @@ const EditNote = () => {
         </div>
         <button type="submit">Save Changes</button>
       </form>
-      {/* <NotePreview markdown={markdown}/> */}
     </section>
   )
 }
