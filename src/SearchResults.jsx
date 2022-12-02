@@ -17,14 +17,13 @@ const SearchResults = ({ searchTerm, selectedTags }) => {
   const results = useMemo(() => {
     return notes.filter((note, id) => {
       let isValid = true;
-      let selectedTagsArray = selectedTags.split(" ");
 
       if (!note.title.toLowerCase().includes(searchTerm.toLowerCase())) {
         isValid = false;
       }
 
       const tagsValid = true;
-      for (let tag of selectedTagsArray) {
+      for (let tag of selectedTags) {
         if (!note.postTags.includes(tag) && tag !== '') {
           isValid = false;
         }
