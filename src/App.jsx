@@ -14,6 +14,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
+          <p>Hello World</p>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/create" element={<CreateNote />}></Route>
