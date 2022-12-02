@@ -26,6 +26,15 @@ const EditNote = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (title === '') {
+      alert("Title can't be empty!");
+      return;
+    } else if (markdown === '') {
+      let confirmEmptyMarkdown = confirm("You have written nothing in the markdown. Do you want to continue?");
+      if (!confirmEmptyMarkdown) return;
+    }
+
     const noteData = { title, postTags, markdown };
     notesDispatch({ type: 'edit', payload: { noteData, id } });
     navigate('/')
@@ -62,7 +71,7 @@ const EditNote = () => {
           <textarea value={markdown} onChange={(e) => setMarkdown(e.target.value)}>
           </textarea>
         </div>
-        <button type="submit">Edit</button>
+        <button type="submit">Save Changes</button>
       </form>
       {/* <NotePreview markdown={markdown}/> */}
     </section>

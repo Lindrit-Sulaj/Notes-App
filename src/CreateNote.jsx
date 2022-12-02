@@ -30,6 +30,15 @@ const CreateNote = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (title === '') {
+      alert("Title can't be empty!");
+      return;
+    } else if (markdown === '') {
+      let confirmEmptyMarkdown = confirm("You have written nothing in the markdown. Do you want to continue?");
+      if (!confirmEmptyMarkdown) return;
+    }
+
     const noteData = { title, postTags, markdown };
     notesDispatch({ type: 'add', payload: { noteData } });
     navigate('/')
