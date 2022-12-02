@@ -322,6 +322,24 @@ body {
   z-index: 10 !important;
   background-color: $background;
 
+  .edittags__close {
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    color: $text-main;
+  }
+
+  @include mobile {
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    max-width: none;
+  }
+
   p.heading {
     color: $text-main;
     margin: 1rem 0;

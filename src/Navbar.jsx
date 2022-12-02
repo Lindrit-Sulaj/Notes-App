@@ -25,7 +25,7 @@ const Navbar = () => {
         </div>
       </nav>
       <Dialog isOpen={editTagsOpened} setIsOpen={setEditTagsOpened}
-      ><EditTags /></Dialog>
+      ><EditTags setIsOpen={setEditTagsOpened} /></Dialog>
     </>
   )
 }

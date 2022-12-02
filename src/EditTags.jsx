@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import useTheme from './ThemeContext';
 
-const EditTags = () => {
+const EditTags = ({ setIsOpen }) => {
   const { tags, tagsDispatch } = useTheme();
   const inputRef = useRef();
 
@@ -29,6 +29,9 @@ const EditTags = () => {
 
   return (
     <div className="EditTags">
+      <button className='edittags__close' onClick={() => setIsOpen(false)}>
+        <i className="fa-solid fa-xmark"></i>
+      </button>
       <p className="heading"><span>Add</span>, delete or edit Tags</p>
       <div className='Add-Tag'>
         <input type="text" ref={inputRef} placeholder='Write a new tag' />
