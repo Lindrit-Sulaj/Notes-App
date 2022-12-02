@@ -6,13 +6,18 @@ const EditTags = ({ setIsOpen }) => {
   const inputRef = useRef();
 
   const addTag = () => {
-    const value = inputRef.current.value;
+    let value = inputRef.current.value;
     if (tags.includes(value)) { 
       alert("Alert: Tag Already Exists");
       return;
     } else if (value === '') {
       alert("Alert: Cannot add empty tag");
       return;
+    } else if (value.split(" ").length > 1) {
+      let replaceTag = confirm("Alert: Tag shoulnd't include empty spaces. Replace them with '-'?");
+
+      if (!replaceTag) return;
+      value = value.split(' ').join('-')
     };
 
     tagsDispatch({ type: 'add', payload: { name: value } });

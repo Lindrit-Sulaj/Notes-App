@@ -12,10 +12,14 @@ const CreateNote = () => {
   const [markdown, setMarkdown] = useState('');
 
   const handleCreateTags = (tag) => {
-    if (tag === '' || !tags.includes(tag)) {
-      alert("Tag cannot be empty or not be included in the tags");
+    if (tag === '') {
+      alert("Tag cannot be empty!");
+      return;
+    } else if (!tags.includes(tag)) {
+      alert("Tag doesn't exist: Try adding one at Edit Tags button");
       return;
     }
+
     setPostTags([...postTags, tag])
   }
 
