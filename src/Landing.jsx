@@ -4,7 +4,7 @@ import SearchResults from './SearchResults';
 
 const Landing = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTags, setSelectedTags] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
 
   return (
     <section className="Landing">
