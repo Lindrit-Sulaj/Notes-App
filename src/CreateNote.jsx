@@ -47,6 +47,7 @@ const CreateNote = () => {
       day: date.getDay(),
       hour: date.getHours(),
       minute: date.getMinutes(),
+      time: date.getTime()
     }
     const noteData = { title, postTags, markdown, date: datetime };
     notesDispatch({ type: 'add', payload: { noteData } });

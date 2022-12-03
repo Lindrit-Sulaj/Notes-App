@@ -59,7 +59,6 @@ const NoteBox = ({ result, title, tags, notesDispatch, date }) => {
   }
 
   if (Object.keys(date).length > 0) {
-    console.log(date);
     if (todaysDate === `${date.day} ${date.month} ${date.year}`) {
       postDate = `${addZero(date.hour)}:${addZero(date.minute)}`;
     } else {
