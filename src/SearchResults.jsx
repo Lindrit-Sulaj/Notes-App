@@ -35,6 +35,12 @@ const SearchResults = ({ searchTerm, selectedTags }) => {
 
   return (
     <div className="SearchResults">
+      {notes == false && (
+        <div className='no-notes-yet'>
+          No notes yet. <Link to="/create">Create note</Link>
+        </div>
+      )}
+      {results == false && notes == true  && <p className='no-search-result'>Search doesn't match any notes</p>}
       {results.map((result, index) => {
         return <NoteBox notesDispatch={notesDispatch} result={result} title={result.title} tags={result.postTags} date={result.date || {}} key={index} />
       })}

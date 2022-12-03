@@ -211,6 +211,16 @@ body {
     gap: 10px;
   }
 
+  .no-notes-yet {
+    color: $text-main;
+    text-align: center;
+    
+    a {
+      text-decoration: none;
+      color: $neon-blue;
+    }
+  }
+
   .note-box {
     background-color: $background-secondary;
     margin-top: auto;
