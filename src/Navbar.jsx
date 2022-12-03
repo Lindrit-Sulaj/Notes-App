@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link to={"/create"}>
             <button className='create'>Create</button>
           </Link>
-          <button onClick={() => setEditTagsOpened(!editTagsOpened)}>Edit Tags</button>
+          <button className='edit-tags' onClick={() => setEditTagsOpened(!editTagsOpened)}>Edit Tags</button>
         </div>
       </nav>
       <Dialog isOpen={editTagsOpened} setIsOpen={setEditTagsOpened}

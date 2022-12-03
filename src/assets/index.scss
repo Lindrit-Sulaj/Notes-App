@@ -81,6 +81,10 @@ body {
     border-radius: 5px;
     cursor: pointer;
 
+    @include mobile {
+      font-size: 16px;
+    }
+
     i {
       color: $neon-blue;
     }
@@ -91,6 +95,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include mobile {
+      border: none;
+      font-size: 16px;
+      width: 30px;
+    }
+  }
+
+  button.edit-tags {
+    @include mobile {
+      border: none;
+      color: $neon-blue;
+      border: 1px solid $background-secondary;
+    }
   }
 
 
