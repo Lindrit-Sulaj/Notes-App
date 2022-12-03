@@ -36,27 +36,47 @@ const SearchResults = ({ searchTerm, selectedTags }) => {
   return (
     <div className="SearchResults">
       {results.map((result, index) => {
-        return <NoteBox notesDispatch={notesDispatch} result={result} title={result.title} tags={result.postTags} key={index} />
+        return <NoteBox notesDispatch={notesDispatch} result={result} title={result.title} tags={result.postTags} date={result.date || {}} key={index} />
       })}
     </div>
   )
 }
 
-const NoteBox = ({ result, title, tags, notesDispatch }) => {
+const NoteBox = ({ result, title, tags, notesDispatch, date }) => {
   const { notes } = useTheme();
   const [optionsOpened, setOptionsOpened] = useState(false);
+  let postDate = "";
 
   const index = notes.getObjectIndex(result);
+
+  let dateInfo = new Date();
+  let todaysDate = `${dateInfo.getDay()} ${dateInfo.getMonth()} ${dateInfo.getFullYear()}`
+
+  let addZero = (n) => {
+    if (String(n).length > 1) return n;
+
+    return "0" + n;
+  }
+
+  if (Object.keys(date).length > 0) {
+    console.log(date);
+    if (todaysDate === `${date.day} ${date.month} ${date.year}`) {
+      postDate = `${addZero(date.hour)}:${addZero(date.minute)}`;
+    } else {
+      postDate = `${addZero(date.day)} ${addZero(date.month)} ${date.year}`;
+    }
+  }
 
   return (
     <div className='note-box'>
       <div className='info'>
-        <Link to={`/notes/${index}`} ><p className='title'>{title}</p></Link>
         <div className="tags">
-          {tags.map((tag, index) => (
-            <button key={index}>{tag}</button>
-          ))}
+          {tags.join(" ● ")}
         </div>
+        <Link to={`/notes/${index}`} ><p className='title'>{title}</p></Link>
+        {postDate !== "" && (
+          <p className='date'>{postDate}</p>
+        )}
       </div>
       <div className="actions">
         <button className='open-actions' onClick={() => setOptionsOpened(!optionsOpened)}>

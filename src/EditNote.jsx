@@ -35,7 +35,15 @@ const EditNote = () => {
       if (!confirmEmptyMarkdown) return;
     }
 
-    const noteData = { title, postTags, markdown };
+    const date = new Date();
+    const datetime = {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+    }
+    const noteData = { title, postTags, markdown, date: datetime };
     notesDispatch({ type: 'edit', payload: { noteData, id } });
     navigate('/')
   }
