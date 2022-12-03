@@ -42,7 +42,17 @@ const CreateNote = () => {
       if (!confirmEmptyMarkdown) return;
     }
 
-    const noteData = { title, postTags, markdown };
+
+    const date = new Date();
+    const datetime = {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDay(),
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      time: date.getTime()
+    }
+    const noteData = { title, postTags, markdown, date: datetime };
     notesDispatch({ type: 'add', payload: { noteData } });
     navigate('/')
   }
@@ -91,9 +101,10 @@ function NewTag({ handleTags }) {
   return (
     <>
       <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" placeholder='Eg: react' id='note-tags' />
-      <button type='button' onClick={() => { 
+      <button type='button' onClick={() => {
         handleTags(inputValue)
-        setInputValue('') }}><i className="fa-solid fa-plus"></i></button>
+        setInputValue('')
+      }}><i className="fa-solid fa-plus"></i></button>
     </>
   )
 }

@@ -149,7 +149,7 @@ body {
 
     .tags {
       display: flex;
-      gap: 1rem;
+      gap: .7rem;
       margin-top: 1.5rem;
       overflow-x: auto;
       padding-bottom: 1rem;
@@ -206,34 +206,44 @@ body {
 
   .SearchResults {
     padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .note-box {
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
+    background-color: $background-secondary;
+    margin-top: auto;
+    height: auto;
     display: flex;
     justify-content: space-between;
     padding: 2rem 1.5rem;
+    border-radius: 1rem;
+
+    .tags {
+      color: $text-secondary;
+      opacity: .6;
+    }
 
     a {
       text-decoration: none;
     }
 
-    .tags {
-      margin-top: 1rem;
-      display: flex;
-      gap: .5rem;
-  
-      button {
-        padding: .3rem 1rem;
-        background-color: $neon-blue;
-        border: none;
-        border-radius: 4px;
-        font-family: $font-main;
-        font-size: 16px;
-        @include mobile {
-          font-size: 15px;
-        }
+    .title {
+      text-decoration: none;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+
+    .date {
+      color: $text-secondary;
+      opacity: .7;
+      @include mobile {
+        font-size: 15px;
       }
     }
 
@@ -331,6 +341,7 @@ body {
   width: 95%;
   max-width: 420px;
   padding: 2rem 2rem;
+  overflow: auto;
   border: 1px solid $background-secondary;
   box-shadow: 0px 5px 20px 10px $background-secondary;
   border-radius: 20px;
